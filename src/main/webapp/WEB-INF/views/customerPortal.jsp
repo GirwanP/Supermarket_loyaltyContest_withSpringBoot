@@ -21,13 +21,13 @@
 	 <p>You have already claimed your points for today</p>
 	</c:if>
 	<c:if test="${waNClaimed}">
-		<form action="claimWeekly" method="post"><input type="submit" onclick="claimdaily()" id="dailyPoints" value="claim weakly points" ></form>
+		<form action="claimWeekly" method="get"><input type="submit" onclick="claimdaily()" id="dailyPoints" value="claim weakly points" ></form>
 	</c:if>
 	<c:if test="${!waNClaimed}">
 	 <p>You have already claimed your points for today</p>
 	</c:if>
 	<c:if test="${maNClaimed}">
-		<form action="claimMonthly" method="post"><input type="submit" onclick="claimdaily()" id="dailyPoints" value="claim Monthly points" ></form>
+		<form action="claimMonthly" method="get"><input type="submit" onclick="claimdaily()" id="dailyPoints" value="claim Monthly points" ></form>
 	</c:if>
 	<c:if test="${!maNClaimed}">
 	 <p>You have already claimed your points for today</p>

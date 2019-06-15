@@ -45,8 +45,12 @@ public class pointsClaimController {
 			session.invalidate();
 			return "customerLogin";
 		}
-
+		
+		
+		
+		
 		List<Score> scores = mservice.getSortedList(activeUser.toString());
+		
 		long tPeriod =MyConstants.dayLength;
 		long diff=tPeriod;
 		if(!scores.isEmpty()){
@@ -69,6 +73,7 @@ public class pointsClaimController {
 		return "redirect:getCustomerPortal";
 	}
 
+	/*
 	@RequestMapping(value = "/getPoints", method = RequestMethod.POST)
 	public String claimPoints(HttpSession session, HttpServletRequest req, HttpServletResponse res, Model model) {
 		System.out.println("inside claimpoint daily post-method");
@@ -110,7 +115,7 @@ public class pointsClaimController {
 	}
 
 	
-	
+	*/
 	
 	
 	
@@ -118,7 +123,7 @@ public class pointsClaimController {
 	//methods below are incomplete
 	
 	
-	@RequestMapping(value = "/claimWeekly", method = RequestMethod.POST)
+	@RequestMapping(value = "/claimWeekly", method = RequestMethod.GET)
 	public String claimWeeklyPt(HttpSession session, Model model) {
 		logger.info("claim weakly post method");
 		Object activeUser=session.getAttribute("activeuserEmail");
@@ -154,7 +159,7 @@ public class pointsClaimController {
 	
 	
 	
-	@RequestMapping(value = "/claimMonthly", method = RequestMethod.POST)
+	@RequestMapping(value = "/claimMonthly", method = RequestMethod.GET)
 	public String claimMonthly(HttpSession session, Model model) {
 
 		if (org.springframework.util.StringUtils.isEmpty(session.getAttribute("activeuserEmail"))) {
