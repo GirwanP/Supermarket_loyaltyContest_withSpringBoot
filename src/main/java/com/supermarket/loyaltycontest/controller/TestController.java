@@ -11,27 +11,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.supermarket.loyaltycontest.services.MyServices;
+import com.supermarket.loyaltycontest.services.TestService;
 
 
 @Controller
 public class TestController {
 	
-	@RequestMapping(value="/testC",method=RequestMethod.GET)
+	@Autowired
+	TestService ts;
+	
+	@RequestMapping(value="/testCw",method=RequestMethod.GET)
 	public String getCusPortal(HttpSession session,Model model){
 		Object activeuserEmail=session.getAttribute("activeuserEmail");
 		if(org.springframework.util.StringUtils.isEmpty(activeuserEmail)){
 			return "customerLogin";
 		}
 		
-		boolean daNClaimed=true,waNClaimed=true,maNClaimed=true;
+		ts.addweekpoints(activeuserEmail.toString());
 		
-	//	model.addAttribute("customer", cdao.getByEmail(session.getAttribute("activeuserEmail").toString()));
-		model.addAttribute("daNClaimed", daNClaimed);
-		model.addAttribute("waNClaimed",waNClaimed);
-		model.addAttribute("maNClaimed", maNClaimed);
-		//scores.add(arg0)
-		model.addAttribute("scoreList", new MyServices().getSortedList(activeuserEmail.toString()));
+		return "redirect:getCustomerPortal";
+	}
+	
+	
+	@RequestMapping(value="/testCm",method=RequestMethod.GET)
+	public String getCusPortalm(HttpSession session,Model model){
+		Object activeuserEmail=session.getAttribute("activeuserEmail");
+		if(org.springframework.util.StringUtils.isEmpty(activeuserEmail)){
+			return "customerLogin";
+		}
 		
-		return "customerPortal";
+		ts.addmonthpoints(activeuserEmail.toString());
+		
+		return "redirect:getCustomerPortal";
 	}
 }

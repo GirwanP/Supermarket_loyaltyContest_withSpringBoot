@@ -35,6 +35,8 @@ public class pointsClaimController {
 	private PointsUpdaterService puservice;
 	@Autowired
 	private MyServices mservice;
+	
+	
 
 	@RequestMapping(value = "/getPoints", method = RequestMethod.GET)
 	public String claimGet(HttpServletRequest req, HttpSession session, Model model, HttpServletResponse res) {

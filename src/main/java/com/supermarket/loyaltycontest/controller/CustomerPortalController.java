@@ -68,7 +68,7 @@ public class CustomerPortalController {
 			daNClaimed=claimStatus[0];
 			waNClaimed=claimStatus[1];
 			maNClaimed=claimStatus[2];
-			
+			System.out.println(claimStatus[0]+" "+claimStatus[1]+" "+claimStatus[2]);
 		}
 		// }finally{}
 		model.addAttribute("customer", cdao.getByEmail(session.getAttribute("activeuserEmail").toString()));
